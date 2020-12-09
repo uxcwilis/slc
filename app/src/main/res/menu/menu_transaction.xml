@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="suska.uin.tif.smartlivingcost.Activity.a">
+    <item
+        android:id="@+id/reset"
+        android:title="Tampilkan Kembali Seluruh Transaksi"
+        android:icon="@drawable/ic_resetcalendar"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/view"
+        android:title="Tampilkan Data"
+        android:icon="@drawable/ic_calendar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/search"
+        android:title="Cari"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:iconTint="@color/white" />
+
+</menu>
+

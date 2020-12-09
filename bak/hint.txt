@@ -1,0 +1,30 @@
+  super.onCreateOptionsMenu(menu,inflater);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final ImageView iconlogout = log_out.getActionView().findViewById()
+                new TapTargetSequence(getActivity())
+                        .targets(
+//                                TapTarget.forToolbarMenuItem(toolbar, R.id.backup, "Cadangkan Data",
+//                                        "Anda dapat menyimpan seluruh data anda pada server sehingga dapat " +
+//                                                "digunakan kembali ketika anda login kembali")
+//                                        .transparentTarget(true)
+//                                        .targetRadius(60)
+//                                        .dimColor(R.color.primaryText)
+//                                        .drawShadow(true),
+//                                TapTarget.forToolbarMenuItem(toolbar, R.id.edit_profil, "Perbaharui Data Diri",
+//                                        "Anda dapat memperbaharui nama, alamat email, dan password akun anda")
+//                                        .transparentTarget(true)
+//                                        .targetRadius(60)
+//                                        .dimColor(R.color.primaryText)
+//                                        .drawShadow(true),
+                                TapTarget.forToolbarMenuItem(toolbar, R.id.logout, "Keluar",
+                                        "Anda dapat mengeluarkan akun anda dari aplikasi")
+                                        .transparentTarget(true)
+                                        .targetRadius(60)
+                                        .dimColor(R.color.primaryText)
+                                        .drawShadow(true)
+                        );
+            }
+        }, 1000);

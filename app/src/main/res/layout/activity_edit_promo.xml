@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    tools:context=".Activity.EditPromo">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:background="@color/colorAccent"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:minHeight="?attr/actionBarSize">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/RedTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Promo Menu"
+            app:titleTextColor="@color/white">
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sr_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:focusable="true"
+        android:layout_above="@id/btn_simpan"
+        android:background="@drawable/bg">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:elevation="5dp"
+                android:drawableLeft="@drawable/ic_delete"
+                android:background="@drawable/rounded_corner_red"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:onClick="Delete"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Hapus" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_namaMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/ket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:maxLines="10"
+                    android:drawableTint="@color/RedTheme"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Deskripsi Promo"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_namaMenu"
+                android:layout_margin="8dp"
+                android:drawableLeft="@drawable/ic_add_photo"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/RedTheme"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Foto Promo" />
+
+            <Button
+                android:id="@+id/btn_select_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_namaMenu"
+                android:layout_toRightOf="@id/tv_photo"
+                android:text="Pilih"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_below="@id/tv_photo"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/budget"
+
+                />
+
+            <TextView
+                android:id="@+id/btncancel_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_photo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_close_photo"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="X"
+                android:textColor="@color/white" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/harga_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imv_photo"
+                android:layout_margin="8dp">
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/edHargaPromo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_credit_card"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Harga Promo"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mulai_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/harga_promo"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/edmulaiPromo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_add_date"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Mulai Promo"
+                    android:drawableTint="@color/RedTheme"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/batas_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mulai_promo"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/edbatasPromo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_add_date"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Akhir Promo"
+                    android:drawableTint="@color/RedTheme"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/RedTheme"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Simpan"
+        android:textColor="@color/white" />
+</RelativeLayout>

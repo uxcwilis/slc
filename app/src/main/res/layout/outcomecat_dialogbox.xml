@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah Kategori Pengeluaran"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/tv_db_outcomecat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialogTitle"
+        android:textSize="12sp"
+        android:text="Logo Kategori Pengeluaran"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <com.maltaisn.icondialog.IconView
+        android:id="@+id/icv_dialog_add_outcom_cat"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_db_outcomecat"
+        app:tint="@color/RedTheme"
+        android:src="@drawable/shopping"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tv_db_outcomecat"
+        android:layout_toEndOf="@+id/icv_dialog_add_outcom_cat"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_db_outcomecat"
+            android:layout_gravity="center"
+            android:maxLines="2"
+            android:text="(Klik logo untuk mengganti tamplian logo)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_Name"
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icv_dialog_add_outcom_cat">
+
+        <EditText
+            android:id="@+id/dialogName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Kategori"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_budget"
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_Name">
+
+        <me.abhinay.input.CurrencyEditText
+            android:id="@+id/budget_cat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Budget Kategori Ini Setiap Bulan"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_budget"
+        android:textAlignment="center"
+        android:maxLines="2"
+        android:id="@+id/ket_budget_tv"
+        android:text="(Kategori tidak memiliki budget khusus jika tidak diinputkan)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/idicon_outcomecatdb"
+        android:text="258"
+        android:layout_below="@id/layout_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/id_outcomecatdb"
+        android:text="258"
+        android:layout_below="@id/layout_Name"
+        android:layout_toRightOf="@id/idicon_outcomecatdb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

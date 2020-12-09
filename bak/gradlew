@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:fillViewport="true"
+    tools:context=".Fragment.Input">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:background="@color/colorAccent"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextColor="@color/white">
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="8dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
+
+            <RelativeLayout
+                android:id="@+id/rl_selected_kat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null">
+
+                <ImageView
+                    android:id="@+id/imv_iconcat"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:clickable="false"
+                    android:src="@drawable/ic_select_category"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_catname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/imv_iconcat"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:text="Klik Icon Kategori"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#737373"
+                    android:typeface="normal" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rlcat"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/rl_selected_kat"
+                android:background="@drawable/borders"
+                android:elevation="5dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/appbarv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selectcat_bg1">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs_select_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        app:tabIconTint="@color/colorPrimary"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextAppearance="@style/TextAppearance.AppCompat.Widget.Switch"
+                        app:tabTextColor="#A6FFFFFF">
+
+                    </android.support.design.widget.TabLayout>
+
+                    <ImageView
+                        android:id="@+id/btnsetcat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tabs_select_category"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/ic_settings" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/select_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/appbarv"
+                    android:scrollbars="vertical"
+                    android:visibility="gone" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/select_category2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/appbarv"
+                    android:scrollbars="vertical"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_biaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlcat"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/icon_biaya"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_add_biaya"
+                    android:tint="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_biaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_toRightOf="@id/icon_biaya"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Jumlah Transaksi"
+                    android:inputType="text"
+                    android:lineSpacingExtra="8sp"
+                    android:textColor="#737373"
+                    android:textColorHint="#737373"
+                    android:textSize="20sp"
+                    android:typeface="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_ket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_biaya"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+
+                <ImageView
+                    android:id="@+id/icon_ket"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_add_ket"
+                    android:tint="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_ket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_ket"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Tuliskan catatan"
+                    android:inputType="textMultiLine|text"
+                    android:maxLines="10"
+                    android:textColor="#737373"
+                    android:textColorHint="#737373"
+                    android:textSize="20sp"
+                    android:typeface="normal" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rltanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_ket"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+
+                <ImageView
+                    android:id="@+id/icon_tanggal"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_add_date"
+                    android:tint="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_toRightOf="@id/icon_tanggal"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Hari ini"
+                    android:inputType="text"
+                    android:textColor="#737373"
+                    android:textColorHint="#737373"
+                    android:textSize="20sp"
+                    android:typeface="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rltanggal"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/icon_photo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_add_photo"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_photo"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Pilih  Gambar"
+                    android:textColor="#737373"
+                    android:textSize="20sp"
+                    android:typeface="normal" />
+
+                <ImageView
+                    android:id="@+id/imv_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="256dp"
+                    android:layout_below="@id/tv_photo"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/budget"
+                    android:visibility="gone"
+
+                    />
+
+                <TextView
+                    android:id="@+id/btncancel_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_photo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/bg_close_photo"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="X"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rlremindat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_photo"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+
+                <ImageView
+                    android:id="@+id/icon_remindat"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_repeat"
+                    android:tint="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_remindat"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_toRightOf="@id/icon_remindat"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Tidak Perlu"
+                    android:inputType="text"
+                    android:textColor="#737373"
+                    android:textColorHint="#737373"
+                    android:textSize="20sp"
+                    android:typeface="normal" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/rlremindat"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal|bottom"
+                android:paddingTop="2px">
+
+
+                <Button
+                    android:id="@+id/add_trans"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_primary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Simpan"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/idcatsec"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+    </FrameLayout>
+
+</ScrollView>
+
+

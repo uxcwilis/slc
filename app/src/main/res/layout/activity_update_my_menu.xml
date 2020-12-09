@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.UpdateMyMenu">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sr_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_simpan"
+        android:background="@drawable/bg">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:elevation="5dp"
+                android:text="Habis" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_namaMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/dialogNamaMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_restaurant"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/RedTheme"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Nama Menu"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_namaMenu"
+                android:layout_margin="8dp"
+                android:drawableLeft="@drawable/ic_add_photo"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/RedTheme"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Foto Menu" />
+
+            <Button
+                android:id="@+id/btn_select_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_namaMenu"
+                android:layout_toRightOf="@id/tv_photo"
+                android:text="Pilih"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_below="@id/tv_photo"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/budget"
+
+                />
+
+            <TextView
+                android:id="@+id/btncancel_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_photo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_close_photo"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="X"
+                android:textColor="@color/white" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/harga_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imv_photo"
+                android:layout_margin="8dp">
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/edHargaMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_credit_card"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Harga Menu"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/menu_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/harga_menu"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/edMenuDeskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_add_ket"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/RedTheme"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Deskripsi Menu"
+                    android:inputType="text|textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/RedTheme"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Simpan"
+        android:textColor="@color/white" />
+</RelativeLayout>

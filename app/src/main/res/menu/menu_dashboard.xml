@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="suska.uin.tif.smartlivingcost.Activity.a">
+
+    <item
+        android:id="@+id/backup"
+        android:title="Cadangkan Data"
+        android:icon="@drawable/ic_backup"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/edit_profil"
+        android:title="Perbaharui Data Diri"
+        android:icon="@drawable/ic_edit"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logout"
+        android:title="Keluar"
+        android:icon="@drawable/ic_logut"
+        app:showAsAction="always|withText" />
+
+</menu>

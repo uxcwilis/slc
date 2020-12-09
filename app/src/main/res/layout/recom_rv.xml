@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    card_view:cardCornerRadius="7dp"
+    card_view:cardElevation="3dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/id_resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/id_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id Menu"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imv_resto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:clickable="false"
+            android:src="@drawable/restaurant"
+            android:tint="@color/colorPrimary" />
+
+        <LinearLayout
+            android:id="@+id/ln_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/ln_angka"
+            android:layout_toRightOf="@id/imv_resto"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nama_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neosanspro_medium"
+                android:text="nama menu"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nama_resto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neosans_pro_regular"
+                android:gravity="center_vertical"
+                android:text="nama" />
+
+            <TextView
+                android:id="@+id/menu_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/neosans_pro_regular"
+                android:gravity="center_vertical"
+                android:text="Tidak Ada Deskripsi Menu"
+                android:maxLines="5"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lat_resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lat"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/lng_resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lng"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ln_angka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/harga_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Rp.15000"
+                android:textAlignment="center"
+                android:textColor="@color/RedTheme"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/distance_resto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/opensans_light"
+                android:text="7.3KM"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawableLeft="@drawable/ic_rating"
+                android:fontFamily="@font/neosans_pro_regular"
+                android:gravity="center_vertical"
+                android:text="4.3" />
+
+            <TextView
+                android:id="@+id/tv_arahkan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:drawableLeft="@drawable/ic_navigate_me"
+                android:background="@drawable/rounded_corner_red"
+                android:text="Arahkan"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:textColor="#fff"
+                android:layout_gravity="end" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">Smart Living Cost</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+
+    <string name="btn_open">Open dialog</string>
+    <string name="btn_add_extra">Add extra icons</string>
+
+    <string name="selected_icons">Selected icons</string>
+    <string name="selected_none">No icons selected</string>
+
+    <string name="settings">Icon dialog settings</string>
+    <string name="option_show_headers">Show category headers</string>
+    <string name="option_sticky_headers">Sticky</string>
+    <string name="option_max_sel">Max selection:</string>
+    <string name="option_max_sel_message">Show message when reached</string>
+    <string name="option_show_select">Show selection</string>
+    <string name="option_disabled_categories">Disabled categories:</string>
+    <string name="option_title_visibility">Title visibility:</string>
+    <string name="option_search_visibility">Search visibility:</string>
+    <string name="option_show_clear_btn">Show clear selection button</string>
+
+    <string name="dialog_search_visb">Search visibility</string>
+    <string-array name="option_search_visibility">
+        <item>Always</item>
+        <item>Never</item>
+        <item>If language available</item>
+    </string-array>
+
+    <string name="dialog_title_visb">Title visibility</string>
+    <string-array name="option_title_visibility">
+        <item>Always</item>
+        <item>Never</item>
+        <item>If search not available</item>
+    </string-array>
+
+    <string name="dialog_disabled_catg">Disable categories</string>
+    <string-array name="option_categories">
+        <item>Family and people</item>
+        <item>Home and personal care</item>
+        <item>Technology</item>
+        <item>Finance and shopping</item>
+        <item>Leisure</item>
+        <item>Transport and travel</item>
+        <item>Food and drink</item>
+        <item>Places and buildings</item>
+        <item>Arts</item>
+        <item>Sports</item>
+        <item>Music and sound</item>
+        <item>Photo and video</item>
+        <item>Nature and animals</item>
+        <item>Math and science</item>
+        <item>Time</item>
+        <item>Tools</item>
+        <item>Computer</item>
+        <item>Arrows</item>
+        <item>Characters and symbols</item>
+    </string-array>
+
+    <string name="option_disabled_catg_fmt">{0,choice,0#No categories|1#1 category|1&lt;{0} categories}</string>
+    <string name="selected_icon_id_fmt">ID {0}</string>
+    <string name="icon_info_fmt">ID: {0}\nCategory: {1}\nLabels: {2}</string>
+    <string name="load_time_fmt">Icons loaded in {0,number,#.#} ms</string>
+    <string name="icon_count_fmt">{0,number} icons loaded</string>
+
+    <string name="category_3d">3D icons</string>
+    <string name="category_science">Mathemathics, biology and chemistry</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_category">Category</string>
+    <string name="title_activity_a">a</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string-array name="repeat_input">
+        <item>Tidak Pernah</item>
+        <item>Besok</item>
+        <item>Minggu Depan</item>
+        <item>Bulan Depan</item>
+    </string-array>
+
+    <string-array name="yesno">
+        <item>Ya</item>
+        <item>Tidak</item>
+    </string-array>
+
+    <string-array name="interval">
+        <item>Tidak Perlu</item>
+        <item>Setiap 1 Jam</item>
+        <item>Setiap 3 Jam</item>
+        <item>Setiap 1 Hari</item>
+    </string-array>
+
+    <string name="next">Lanjut</string>
+    <string name="skip">Lewati</string>
+    <string name="start">Mengerti</string>
+
+    <string name="slide_1_title">Keuanganku</string>
+    <string name="slide_1_desc">Cara Mudah untuk mengendalikan Keuangan Anda</string>
+
+    <string name="slide_2_title">Rekomendasi Menu</string>
+    <string name="slide_2_desc">Memberikan Rekomendasi Menu sesuai budget Anda beserta Lokasi Penjualannya</string>
+
+    <string name="slide_3_title">Membangun\nKomunitas</string>
+    <string name="slide_3_desc">Berikan Ulasan Mengenai Menu\nYang Anda Beli</string>
+
+    <string name="slide_4_title">Daftarkan Menu Anda</string>
+    <string name="slide_4_desc">Tambahkan Informasi Mengenai Restoran dan Menu Anda Agar Dapat Menjadi Rekomendasi Bagi Yang Lain</string>
+
+    <string name="material_calendar_monday">S</string>
+    <string name="material_calendar_tuesday">S</string>
+    <string name="material_calendar_wednesday">R</string>
+    <string name="material_calendar_thursday">K</string>
+    <string name="material_calendar_friday">J</string>
+    <string name="material_calendar_saturday">S</string>
+    <string name="material_calendar_sunday">A</string>
+
+    <array name="material_calendar_months_array">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </array>
+</resources>

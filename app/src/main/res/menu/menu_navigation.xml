@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/i_beranda"
+        android:checked="true"
+        android:icon="@drawable/beranda"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/i_transaksi"
+        android:icon="@drawable/trans"
+        android:title="Transaksi" />
+    <!--must set the item title to empty-->
+    <item
+        android:id="@+id/i_input"
+        android:title="" />
+    <item
+        android:id="@+id/i_makan"
+        android:icon="@drawable/restaurant"
+        android:title="Rekomendasi" />
+    <item
+        android:id="@+id/i_info"
+        android:icon="@drawable/info"
+        android:title="Informasi" />
+</menu>

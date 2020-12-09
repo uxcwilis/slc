@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/recenter"
+        android:icon="@drawable/ic_my_loc"
+        android:title="Akurasi Lokasi"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/setting_rekom"
+        android:icon="@drawable/ic_settings"
+        android:title="Pengaturan Rekomendasi"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/buy_rekom"
+        android:icon="@drawable/shopping"
+        android:iconTint="@color/white"
+        android:title="Beli Rekomendasi"
+        android:visible="false"
+        app:showAsAction="always" />
+
+</menu>

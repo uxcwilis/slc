@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Atur Tanggal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RelativeLayout
+        android:id="@+id/rltanggalawal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialogTitle">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/icon_tanggal"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_add_date" />
+
+            <EditText
+                android:id="@+id/et_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/icon_tanggal"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Tanggal Awal"
+                android:inputType="text"
+                android:textColorHint="#737373"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_hingga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rltanggalawal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Hingga"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/rltanggalakhir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_hingga">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/icon_tanggal2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_add_date"
+                android:tint="@color/RedTheme" />
+
+            <EditText
+                android:id="@+id/et_tanggal2"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/icon_tanggal2"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Tanggal Akhir"
+                android:inputType="text"
+                android:textColorHint="#737373"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

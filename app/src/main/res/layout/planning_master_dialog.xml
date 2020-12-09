@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/opensans_regular"
+        android:padding="16dp"
+        android:text="Perencanaan"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialogTitle"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <EditText
+            android:id="@+id/nama_rencana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_add_ket"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/opensans_regular"
+            android:hint="Tujuan Perencanaan"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_target_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_Name"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <me.abhinay.input.CurrencyEditText
+            android:id="@+id/target_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_credit_card"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimary"
+            android:fontFamily="@font/opensans_regular"
+            android:hint="Jumlah Uang yang Ingin dikumpulkan"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_target_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_target_money"
+        android:editable="false"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <EditText
+            android:id="@+id/target_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_add_date"
+            android:drawablePadding="10dp"
+            android:editable="false"
+            android:fontFamily="@font/opensans_regular"
+            android:hint="Tanggal Keperluan"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_kat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_target_date"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Angsuran dari Perencanaan Ini Akan dikelompokkan:"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_ket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_kat"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="(Klik Kategori)"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:id="@+id/rlKat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ket"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="8dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+
+        <ImageView
+            android:id="@+id/imv_iconcat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:clickable="false"
+            android:src="@drawable/ic_select_category"
+            android:tint="@color/RedTheme" />
+
+        <TextView
+            android:id="@+id/tv_catname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/imv_iconcat"
+            android:gravity="center_vertical"
+            android:text="Klik Icon Kategori"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:typeface="normal" />
+
+        <RelativeLayout
+            android:id="@+id/rlcat"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/tv_catname"
+            android:background="@drawable/borders"
+            android:elevation="5dp"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/appbarv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/selectcat_bg2">
+
+                <TextView
+                    android:id="@+id/tabs_select_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="PENGELUARAN"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/btnsetcat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tabs_select_category"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_settings" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/select_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appbarv"
+                android:scrollbars="vertical" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

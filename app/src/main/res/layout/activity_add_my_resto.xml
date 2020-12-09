@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AddMyResto">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sr_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_simpan">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:elevation="5dp"
+                android:text="Tutup" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_namaresto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/dialogNamaResto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_resto"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/RedTheme"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Nama Restoran"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tv_lokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_namaresto"
+                android:layout_margin="8dp"
+                android:drawableLeft="@drawable/ic_add_loc"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Tentukan Lokasi Restoran : (Tekan Lama Peta)" />
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_below="@id/tv_lokasi" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/AlamatResto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/map"
+                android:layout_margin="8dp">
+
+                <EditText
+                    android:id="@+id/dialogAlamatResto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_node_arrow"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:hint="Alamat Restoran"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/AlamatResto"
+                android:layout_margin="8dp"
+                android:drawableLeft="@drawable/ic_add_photo"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/RedTheme"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Foto Restoran" />
+
+            <Button
+                android:id="@+id/btn_select_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/AlamatResto"
+                android:layout_toRightOf="@id/tv_photo"
+                android:text="Pilih" />
+
+            <ImageView
+                android:id="@+id/imv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_below="@id/tv_photo"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/budget"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/btncancel_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_photo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_close_photo"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="X"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/RedTheme"
+        android:fontFamily="@font/opensans_regular"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Simpan"
+        android:textColor="@color/white" />
+</RelativeLayout>
