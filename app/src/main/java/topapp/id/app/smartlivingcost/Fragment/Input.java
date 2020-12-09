@@ -3,20 +3,10 @@ package topapp.id.app.smartlivingcost.Fragment;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,10 +19,20 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
+import com.maltaisn.calcdialog.CalcDialog;
 import com.maltaisn.icondialog.IconHelper;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
@@ -47,15 +47,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import topapp.id.app.calcdialog.CalcDialog;
 import topapp.id.app.smartlivingcost.Activity.Category;
 import topapp.id.app.smartlivingcost.Activity.MainActivity;
 import topapp.id.app.smartlivingcost.Activity.Planning;
-import topapp.id.app.smartlivingcost.Activity.RegisterActivity;
 import topapp.id.app.smartlivingcost.Adapter.SelectCategoryRVItem;
+import topapp.id.app.smartlivingcost.Model.KategoriModel;
 import topapp.id.app.smartlivingcost.R;
 
 import static android.content.ContentValues.TAG;
@@ -63,29 +64,27 @@ import static android.content.ContentValues.TAG;
 
 public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
     private DBSLC MyDatabase;
-    private ArrayList IdCatList, NamaCatLis, IdIconCatList, JenisKatList;
     private String rcNamaKat, rcIconKat, rcIdKat, rcJenisKat, photo_uri, tanggal, ket, tanggal_remindat = "";
-    private RecyclerView.LayoutManager layoutManager, layoutManager2;
-    public static TabLayout tabLayout;
-    MenuItem more;
+    private static TabLayout tabLayout;
     @Nullable
     private BigDecimal value = null;
     @NonNull
     private NumberFormat nbFmt;
     public TextView namaCat, tv_photo;
 
-    EditText et_biaya, et_tanggal, et_ket, et_remindat;
-    ImageView iconcat, iconbiaya, iconket, icontanggal, iconphoto, imvphoto, icon_remindat;
-    Toolbar toolbar;
-    SimpleDateFormat dateFormatter;
-    RecyclerView recyclerView2, recyclerView;
-    SelectCategoryRVItem SCRVI;
-    RelativeLayout rlcat;
-    Button btn_addTrans;
-    TextView btncancel_photo;
-    Calendar newCalendar;
-    int biaya, tabselect_cat;
-    ScrollView sv;
+    private EditText et_biaya, et_tanggal, et_ket, et_remindat;
+    private ImageView iconcat, iconbiaya, iconket, icontanggal, iconphoto, imvphoto, icon_remindat;
+    private Toolbar toolbar;
+    private SimpleDateFormat dateFormatter;
+    private RecyclerView recyclerView2, recyclerView;
+    private SelectCategoryRVItem SCRVI;
+    private RelativeLayout rlcat;
+    private Button btn_addTrans;
+    private TextView btncancel_photo;
+    private Calendar newCalendar;
+    private int biaya, tabselect_cat;
+
+    private List<KategoriModel> myKategori = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,18 +93,15 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
         View rootView = inflater.inflate(R.layout.fragment_input, container, false);
         //Menerapkan TabLayout dan ViewPager pada Activity
         toolbar = rootView.findViewById(R.id.toolbar); //Inisialisasi dan Implementasi id Toolbar
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar); // Memasang Toolbar pada Aplikasi
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Input Data Transaksi Baru");
+        ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar); // Memasang Toolbar pada Aplikasi
+        Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setTitle("Input Data Transaksi Baru");
         setHasOptionsMenu(true);
+        getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
 
-        IdCatList = new ArrayList<>();
-        NamaCatLis = new ArrayList<>();
-        IdIconCatList = new ArrayList<>();
-        JenisKatList = new ArrayList<>();
         MyDatabase = new DBSLC(getActivity().getBaseContext());
         getData("0");
-        SCRVI = new SelectCategoryRVItem(IdCatList, NamaCatLis, IdIconCatList, JenisKatList);
+        SCRVI = new SelectCategoryRVItem(myKategori);
         recyclerView = rootView.findViewById(R.id.select_category);
         recyclerView2 = rootView.findViewById(R.id.select_category2);
         rlcat = rootView.findViewById(R.id.rlcat);
@@ -125,7 +121,6 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
         et_remindat = rootView.findViewById(R.id.et_remindat);
         photo_uri = "";
         et_ket = rootView.findViewById(R.id.et_ket);
-        sv = rootView.findViewById(R.id.sv);
 
 
         newCalendar = Calendar.getInstance();
@@ -138,15 +133,15 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
 
         SCRVI.setOnItemClickListener(new SelectCategoryRVItem.ClickListener() {
             @Override
-            public void onItemClick(int position, final String idiconcat, final String idicat, final String namacat, final String jeniskat, View v) {
+            public void onItemClick(final int position, View v) {
                 Log.d(TAG, "onItemClick position: " + rcIdKat + rcIconKat + rcNamaKat + rcJenisKat);
-                getActivity().runOnUiThread(new Runnable() {
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rcIconKat = String.valueOf(idiconcat);
-                        rcIdKat = idicat;
-                        rcNamaKat = namacat;
-                        rcJenisKat = jeniskat;
+                        rcIconKat = myKategori.get(position).getIdIconKat();
+                        rcIdKat = myKategori.get(position).getIdKat();
+                        rcNamaKat = myKategori.get(position).getNamaKat();
+                        rcJenisKat = myKategori.get(position).getJenisKat();
                         namaCat.setText(rcNamaKat);
                         rlcat.setVisibility(View.GONE);
 
@@ -154,12 +149,11 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                             @Override
                             public void onDataLoaded() {
                                 // This happens on UI thread, and is guaranteed to be called.
-                                iconcat.setImageDrawable(iconHelper.getIcon(Integer.parseInt(rcIconKat)).getDrawable(getContext()));
+                                iconcat.setImageDrawable(iconHelper.getIcon(Integer.parseInt(rcIconKat)).getDrawable(Objects.requireNonNull(getContext())));
                                 if (Integer.parseInt(rcJenisKat) == 1) {
-                                    sv.setBackground((ContextCompat.getDrawable(getContext(), R.drawable.bg3)));
                                     iconcat.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary));
                                     toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Input Data Pemasukan Baru");
+                                    Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setTitle("Input Data Pemasukan Baru");
                                     btn_addTrans.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_bg_primary));
                                     iconbiaya.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary));
                                     iconket.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary));
@@ -168,11 +162,9 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                                     icon_remindat.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary));
 
 
-
                                 } else {
-                                    sv.setBackground((ContextCompat.getDrawable(getContext(), R.drawable.bg4)));
                                     iconcat.setColorFilter(ContextCompat.getColor(getContext(), R.color.RedTheme));
-                                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Input Data Pengeluaran Baru");
+                                    Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setTitle("Input Data Pengeluaran Baru");
                                     toolbar.setBackgroundColor(getResources().getColor(R.color.RedTheme));
                                     btn_addTrans.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_bg_red));
                                     iconbiaya.setColorFilter(ContextCompat.getColor(getContext(), R.color.RedTheme));
@@ -180,7 +172,6 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                                     iconphoto.setColorFilter(ContextCompat.getColor(getContext(), R.color.RedTheme));
                                     icontanggal.setColorFilter(ContextCompat.getColor(getContext(), R.color.RedTheme));
                                     icon_remindat.setColorFilter(ContextCompat.getColor(getContext(), R.color.RedTheme));
-
 
 
                                 }
@@ -205,7 +196,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
             @Override
             public void onClick(View v) {
                 if (rcJenisKat.isEmpty() || rcJenisKat.equals("") || rcJenisKat.equals("null") || rcJenisKat == null) {
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                    new SweetAlertDialog(Objects.requireNonNull(getActivity()), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Menambah Data Gagal")
                             .setContentText("Silahkan Pilih Kategori")
                             .show();
@@ -220,7 +211,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
         et_remindat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Objects.requireNonNull(getActivity()), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         Calendar newDate = Calendar.getInstance();
@@ -237,7 +228,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
         et_tanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Objects.requireNonNull(getActivity()), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         Calendar newDate = Calendar.getInstance();
@@ -291,7 +282,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                     createrv();
                     recyclerView.setVisibility(View.VISIBLE);
                     recyclerView2.setVisibility(View.GONE);
-                    appBar.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.selectcat_bg2));
+                    appBar.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.selectcat_bg2));
                     tabLayout.setBackgroundColor(getResources().getColor(R.color.RedTheme));
                     tabselect_cat = 0;
                 } else if (tabLayout.getSelectedTabPosition() == 1) {
@@ -301,7 +292,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                     recyclerView.setVisibility(View.GONE);
                     recyclerView2.setVisibility(View.VISIBLE);
                     tabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                    appBar.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.selectcat_bg1));
+                    appBar.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.selectcat_bg1));
                     tabselect_cat = 1;
                 }
             }
@@ -322,13 +313,13 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
             @Override
             public void onClick(View v) {
                 if (rcJenisKat.isEmpty() || rcJenisKat.equals("") || rcJenisKat.equals("null") || rcJenisKat == null) {
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                    new SweetAlertDialog(Objects.requireNonNull(getActivity()), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Menambah Data Gagal")
                             .setContentText("Silahkan Pilih Kategori")
                             .show();
                 } else {
                     if (et_biaya.length() < 1) {
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                        new SweetAlertDialog(Objects.requireNonNull(getActivity()), SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Menambah Data Gagal")
                                 .setContentText("Silahkan Isi Jumlah Transaksi")
                                 .show();
@@ -358,7 +349,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                             @Override
                             public void onCancelClick() {
                             }
-                        }).show(getActivity().getSupportFragmentManager());
+                        }).show(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
             }
         });
 
@@ -366,7 +357,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
             @Override
             public void onClick(View v) {
 
-                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                new SweetAlertDialog(Objects.requireNonNull(getActivity()), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Batalkan Gambar")
                         .setContentText("Apakah Anda Yakin untuk membatalkan gambar terpilih?")
                         .setCancelText("Tidak")
@@ -377,6 +368,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
                                 imvphoto.setVisibility(View.GONE);
                                 btncancel_photo.setVisibility(View.GONE);
                                 photo_uri = "";
+                                sDialog.dismissWithAnimation();
                             }
                         })
                         .showCancelButton(true)
@@ -451,7 +443,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
     }
 
     private void viewrlcat() {
-        getActivity().runOnUiThread(new Runnable() {
+        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (rlcat.getVisibility() == View.VISIBLE) {
@@ -464,8 +456,8 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
     }
 
     private void saveData() {
-        SimpleDateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
-        SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date, date_remindat;
         String set_remindat = "";
         try {
@@ -484,9 +476,9 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
 
 //            String set_tgl_input = String.valueOf(tanggal);
             Date todayDate = Calendar.getInstance().getTime();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String set_tgl_input = formatter.format(todayDate);
-            String set_jam_input = new SimpleDateFormat("HH:mm:ss").format(newCalendar.getTime());
+            @SuppressLint("SimpleDateFormat") String set_jam_input = new SimpleDateFormat("HH:mm:ss").format(newCalendar.getTime());
 
 
             //Mendapatkan Repository dengan Mode Menulis
@@ -512,7 +504,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
             e.printStackTrace();
         }
 
-        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+        new SweetAlertDialog(Objects.requireNonNull(getActivity()), SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Berhasil")
                 .setContentText("Sukses Menyimpan Transaksi")
                 .show();
@@ -526,20 +518,19 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
 
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_more_input, menu);
-        more = menu.findItem(R.id.more);
+        MenuItem more = menu.findItem(R.id.more);
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id) {
-            case R.id.more:
-                Intent i = new Intent(getActivity(), Planning.class);
-                startActivity(i);
-                return true;
+        if (id == R.id.more) {
+            Intent i = new Intent(getActivity(), Planning.class);
+            startActivity(i);
+            return true;
         }
         return false;
     }
@@ -557,7 +548,7 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
     }
 
 
-    void selectCategory() {
+    private void selectCategory() {
         rlcat.setVisibility(View.VISIBLE);
         if (rcJenisKat.equals("1")) {
             TabLayout.Tab tab = tabLayout.getTabAt(0);
@@ -585,29 +576,25 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
         //Melooping Sesuai Dengan Jumlan Data (Count) pada cursor
         for (int count = 0; count < cursor.getCount(); count++) {
             cursor.moveToPosition(count);//Berpindah Posisi dari no index 0 hingga no index terakhir
-            IdCatList.add(cursor.getString(0));//Menambil Data Dari Kolom 0 (NIM)
-            NamaCatLis.add(cursor.getString(1));//Menambil Data Dari Kolom 0 (NIM)
-            IdIconCatList.add(cursor.getString(2));//Menambil Data Dari Kolom 2 (Jurusan)
-            JenisKatList.add(cursor.getString(3));//Menambil Data Dari Kolom 2 (Jurusan)
+            KategoriModel kategoriModel = new KategoriModel(cursor.getString(0), cursor.getString(1)
+                    , cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            myKategori.add(kategoriModel);
         }
     }
 
     private void cleardatacategory() {
-        IdCatList.clear();
-        NamaCatLis.clear();
-        IdIconCatList.clear();
-        JenisKatList.clear();
+        myKategori.clear();
     }
 
     private void createrv() {
-        layoutManager = new GridLayoutManager(getActivity(), 4);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 4);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(SCRVI);
     }
 
     private void createrv2() {
-        layoutManager2 = new GridLayoutManager(getActivity(), 4);
+        RecyclerView.LayoutManager layoutManager2 = new GridLayoutManager(getActivity(), 4);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setAdapter(SCRVI);
@@ -615,6 +602,5 @@ public class Input extends Fragment implements CalcDialog.CalcDialogCallback {
     }
 
 }
-
 
 

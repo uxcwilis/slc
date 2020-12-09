@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="suska.uin.tif.smartlivingcost">
+    package="topapp.id.app.smartlivingcost">
 
     <dist:module dist:instant="true" />
 
@@ -31,64 +31,64 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Activity.Puasa"
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.Puasa"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activity.SaranAct"
+            android:name="topapp.id.app.smartlivingcost.Activity.SaranAct"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Promo"
+            android:name="topapp.id.app.smartlivingcost.Activity.Promo"
             android:label="Promo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.EditPromo"
+            android:name="topapp.id.app.smartlivingcost.Activity.EditPromo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.ReportedSingleMenu"
+            android:name="topapp.id.app.smartlivingcost.Activity.ReportedSingleMenu"
             android:label="Suspend Menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Reported"
+            android:name="topapp.id.app.smartlivingcost.Activity.Reported"
             android:label="Menu Dilaporkan Pengguna" />
         <activity
-            android:name=".Activity.ResetPass"
+            android:name="topapp.id.app.smartlivingcost.Activity.ResetPass"
             android:label="Reset Password"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Intro"
+            android:name="topapp.id.app.smartlivingcost.Activity.Intro"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.Angsuran" />
-        <activity android:name=".Activity.UpdateMyMenu" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.Angsuran" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.UpdateMyMenu" />
         <activity
-            android:name=".Activity.FrontMenu"
+            android:name="topapp.id.app.smartlivingcost.Activity.FrontMenu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.UpdateMyResto" />
-        <activity android:name=".Activity.AddMyMenu" />
-        <activity android:name=".Activity.AddMyResto" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.UpdateMyResto" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.AddMyMenu" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.AddMyResto" />
         <activity
-            android:name=".Activity.FrontResto"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activity.MyResto"
+            android:name="topapp.id.app.smartlivingcost.Activity.FrontResto"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.RecomSetting"
+            android:name="topapp.id.app.smartlivingcost.Activity.MyResto"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.NavigateMe"
+            android:name="topapp.id.app.smartlivingcost.Activity.RecomSetting"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.Planning" />
         <activity
-            android:name=".Activity.RegisterActivity"
+            android:name="topapp.id.app.smartlivingcost.Activity.NavigateMe"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.Planning" />
+        <activity
+            android:name="topapp.id.app.smartlivingcost.Activity.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name="topapp.id.app.smartlivingcost.Activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Activity.CategoryDetailTrans" />
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.CategoryDetailTrans" />
         <activity
-            android:name=".Activity.UpdateDeleteTrans"
+            android:name="topapp.id.app.smartlivingcost.Activity.UpdateDeleteTrans"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
@@ -103,12 +103,12 @@
         </provider>
 
         <activity
-            android:name=".Activity.Category"
+            android:name="topapp.id.app.smartlivingcost.Activity.Category"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.MainActivity"
+            android:name="topapp.id.app.smartlivingcost.Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.SplashScreen">
+        <activity android:name="topapp.id.app.smartlivingcost.Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -117,7 +117,7 @@
         </activity>
 
         <receiver
-            android:name=".Util.AppReceiver"
+            android:name="topapp.id.app.smartlivingcost.Util.AppReceiver"
             android:enabled="true"
             android:exported="true" />
 
